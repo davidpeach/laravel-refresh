@@ -20,7 +20,7 @@
         @enderror
 
         <label for="email">
-            <span>Username</span>
+            <span>Email</span>
             <input type="email" name="email" id="email" value="{{ old('email') }}"/>
         </label>
         @error('email')

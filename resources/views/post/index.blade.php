@@ -1,5 +1,9 @@
 <x-layout>
 
+    @if(session()->has('success'))
+        <p>{{ session('success') }}</p>
+    @endif
+
     <form action"#" method="get">
         <input type="search" name="q" value="{{ request('q') }}" />
         <button type="submit">Search</button>
