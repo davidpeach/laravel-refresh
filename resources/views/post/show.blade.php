@@ -1,6 +1,9 @@
 <x-layout>
-    <h1>{{ $post->title }}</h1>
+    <p>
+        <a href="/?category={{ $post->category->slug }}">{{ $post->category->name }}</a>
+    </p>
+    <h1 class="post-title">{{ $post->title }}</h1>
     <div>
-        {{ $post->body }}
+        {!! $post->body !!}
     </div>
 </x-layout>

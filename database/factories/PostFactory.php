@@ -22,7 +22,10 @@ class PostFactory extends Factory
             'category_id' => Category::factory(),
             'slug' => $this->faker->word(),
             'excerpt' => $this->faker->sentence(),
-            'body' => $this->faker->paragraph(),
+            'body' => collect($this->faker->paragraphs(5))->map(function ($paragraph){
+                return vsprintf('<p>%s</p>', [$paragraph]);
+            })->join(''),
+            'published_at' => $this->faker->dateTime(),
         ];
     }
 }

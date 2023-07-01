@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Controllers\CreateRegisterController;
+use App\Http\Controllers\PostIndexController;
+use App\Http\Controllers\PostShowController;
+use App\Http\Controllers\StoreRegisterController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('posts/{post:slug}', PostShowController::class);
+Route::get('/', PostIndexController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('register', CreateRegisterController::class);
+Route::post('register', StoreRegisterController::class);
