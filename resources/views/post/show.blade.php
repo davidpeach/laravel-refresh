@@ -9,6 +9,9 @@
         </div>
     </div>
     <section>
-        <x-comment />
+        <x-comment-form />
+        @foreach($post->comments as $comment)
+        <x-comment :comment="$comment" />
+        @endforeach
     </section>
 </x-layout>

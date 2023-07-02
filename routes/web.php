@@ -7,10 +7,12 @@ use App\Http\Controllers\CreateRegisterController;
 use App\Http\Controllers\PostIndexController;
 use App\Http\Controllers\PostShowController;
 use App\Http\Controllers\StoreLoginController;
+use App\Http\Controllers\StorePostCommentController;
 use App\Http\Controllers\StoreRegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('posts/{post:slug}', PostShowController::class);
+Route::post('posts/{post:slug}/comments', StorePostCommentController::class);
 Route::get('/', PostIndexController::class);
 
 Route::get('login', CreateLoginController::class)->middleware(['guest']);

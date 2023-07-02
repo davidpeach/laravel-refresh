@@ -12,7 +12,12 @@ class PostShowController extends Controller
     public function __invoke(Post $post)
     {
         return view('post.show', [
-            'post' => $post->load('category'),
+            'post' => $post->load([
+                'category',
+                'comments' => [
+                    'author',
+                ],
+            ]),
         ]);
     }
 }

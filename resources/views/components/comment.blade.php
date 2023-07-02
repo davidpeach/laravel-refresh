@@ -1,13 +1,15 @@
+@props(['comment'])
+
 <article>
     <div>
-        <img src="https://i.pravatar.cc/100" />
+        <img src="https://i.pravatar.cc/100?u={{ $comment->id }}" />
     </div>
     <div>
         <header>
-            <h3>John Doe</h3>
-            <p>Posted 8 weeks ago</p>
+            <h3>{{ $comment->author->username }}</h3>
+            <p>{{ $comment->created_at }}</p>
         </header>
-        <p>this is the comment content.</p>
+        {!! $comment->body !!}
     </div>
 </article>
 
