@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 use App\Http\Controllers\CreateLoginController;
 use App\Http\Controllers\CreateRegisterController;
+use App\Http\Controllers\IndexAdminPostsController;
 use App\Http\Controllers\PostIndexController;
 use App\Http\Controllers\PostShowController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowAdminPostsController;
 use App\Http\Controllers\StoreLoginController;
 use App\Http\Controllers\StoreNewsletterSubscriberController;
 use App\Http\Controllers\StorePostCommentController;
@@ -57,6 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/posts', IndexAdminPostsController::class)->name('admin.posts');
 });
 
 require __DIR__.'/auth.php';
