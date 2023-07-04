@@ -2,13 +2,18 @@
 import NewAuthLayout from '@/Layouts/NewAuthLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
-defineProps<{
-    foo: string,
-}>
+const emit = defineEmits<{
+  (e: 'moose'): void
+}>();
+
+function buttonClick() {
+    emit('moose')
+}
+
 </script>
 
 <template>
     <NewAuthLayout>
-        <p>LOLCAT</p>
+        <v-btn @click="buttonClick">Button in Component</v-btn>
     </NewAuthLayout>
 </template>

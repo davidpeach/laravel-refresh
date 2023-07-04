@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.9",
+        "pinia": "^2.1.4",
         "vue": "^3.2.36",
         "vuetify": "^3.3.6"
     }
