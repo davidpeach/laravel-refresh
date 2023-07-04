@@ -1,9 +1,10 @@
-<form method="POST" action="#">
+@props(['post'])
+<form method="POST" action="/posts/{{ $post->slug }}/comments">
     @csrf
     <h2>Add Comment</h2>
 
     <div>
-    <textarea>
+    <textarea name="body">
 
     </textarea>
     </div>

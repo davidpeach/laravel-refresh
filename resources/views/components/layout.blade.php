@@ -14,4 +14,20 @@
 @endguest
 <body>
 {{ $slot }}
+
+<footer>
+    <form method="POST" action="newsletter">
+        @csrf
+        <label for="email">
+            <span>Email</span>
+            <input type="email" name="email" />
+        </label>
+        <button type="submit">Subscribe</button>
+        @error('email')
+        <aside>
+            <p>{{ $message }}</p>
+        </aside>
+        @enderror
+    </form>
+</footer>
 </body>

@@ -7,7 +7,7 @@
     <div>
         <header>
             <h3>{{ $comment->author->username }}</h3>
-            <p>{{ $comment->created_at }}</p>
+            <p>{{ $comment->created_at->diffForHumans() }}</p>
         </header>
         {!! $comment->body !!}
     </div>

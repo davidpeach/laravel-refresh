@@ -9,7 +9,9 @@
         </div>
     </div>
     <section>
-        <x-comment-form />
+        @auth
+        <x-comment-form :post="$post" />
+        @endauth
         @foreach($post->comments as $comment)
         <x-comment :comment="$comment" />
         @endforeach
