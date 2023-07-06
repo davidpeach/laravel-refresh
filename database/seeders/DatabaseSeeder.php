@@ -25,11 +25,10 @@ class DatabaseSeeder extends Seeder
             'post_id' => $commentedPost->id,
             'user_id' => $commentUser->id,
         ]);
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     }
 }

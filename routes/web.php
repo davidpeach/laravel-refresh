@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\DesignController;
 use App\Http\Controllers\IndexAdminPostsController;
 use App\Http\Controllers\PostIndexController;
 use App\Http\Controllers\PostShowController;
@@ -46,6 +47,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/posts', IndexAdminPostsController::class)->name('admin.posts');
+});
+
+Route::prefix('design')->group(function () {
+    Route::get('article', [ DesignController::class, 'article']);
 });
 
 require __DIR__.'/auth.php';
