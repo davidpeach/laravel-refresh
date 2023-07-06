@@ -16,7 +16,7 @@ class StoreLoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(! auth()->attempt($attributes)) {
+        if (! auth()->attempt($attributes)) {
             return back()
                 ->withInput()
                 ->withErrors(['username' => 'Log in failed.']);

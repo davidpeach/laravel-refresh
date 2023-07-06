@@ -36,5 +36,5 @@ return [
         'server_prefix' => env('MAILCHIMP_SERVER_PREFIX'),
         'default_list_id' => env('MAILCHIMP_DEFAULT_LIST_ID'),
         'initial_member_status' => 'subscribed',
-    ]
+    ],
 ];

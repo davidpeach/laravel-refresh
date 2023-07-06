@@ -11,6 +11,7 @@ final class StoreNewsletterSubscriberController extends Controller
     public function __construct(private Newsletter $newsletter)
     {
     }
+
     /**
      * Handle the incoming request.
      */
@@ -20,7 +21,7 @@ final class StoreNewsletterSubscriberController extends Controller
             'email' => [
                 'required',
                 'email',
-            ]
+            ],
         ]);
 
         try {

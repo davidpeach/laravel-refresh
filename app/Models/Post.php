@@ -33,13 +33,12 @@ class Post extends Model
     {
         $query->when($filter['q'] ?? false, function ($query, $search) {
             $query
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('body', 'like', '%' . $search . '%');
+                ->where('title', 'like', '%'.$search.'%')
+                ->orWhere('body', 'like', '%'.$search.'%');
         });
 
         $query->when($filter['category'] ?? false, function ($query, $category) {
-            $query->whereHas('category', fn ($query) =>
-                $query->where('slug', $category)
+            $query->whereHas('category', fn ($query) => $query->where('slug', $category)
             );
         });
     }

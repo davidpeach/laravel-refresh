@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         Comment::factory()->times(50)->create([
             'post_id' => $commentedPost->id,
-            'user_id' => $commentUser->id
+            'user_id' => $commentUser->id,
         ]);
         // \App\Models\User::factory(10)->create();
 

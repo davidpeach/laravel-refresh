@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+import '@mdi/font/css/materialdesignicons.css'
 
 import { createApp, h, DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -11,10 +12,18 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
 const vuetify = createVuetify({
-  components,
-  directives,
+    components,
+    directives,
+    icons: {
+        defaultSet: 'mdi',
+        aliases,
+        sets: {
+            mdi,
+        },
+    },
 })
 const pinia = createPinia()
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';

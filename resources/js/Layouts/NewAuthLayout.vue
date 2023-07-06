@@ -4,27 +4,17 @@ import { ref } from 'vue'
 import { useLayoutStore } from '@/Stores/layout'
 import { storeToRefs } from 'pinia'
 
-const showLeft = ref(true)
-const showRight = ref(false)
-
 const layoutStore = useLayoutStore()
-const { showRight } = storeToRefs(layoutStore)
-
-
-function onButtonClicked() {
-  console.log('here');
-  showRight = !showRight
-}
-
+const { showLeft, showRight} = storeToRefs(layoutStore)
 </script>
 
 <template>
   <v-layout class="rounded rounded-md">
-    <v-app-bar color="surface-variant" title="Application bar"></v-app-bar>
+    <v-app-bar color="surface-variant" title="Dave's Dashboard" />
 
     <v-navigation-drawer v-model="showLeft">
       <v-list>
-        <v-list-item title="Drawer left"></v-list-item>
+        <v-list-item prepend-icon="mdi-note-edit" title="Posts"></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -37,7 +27,6 @@ function onButtonClicked() {
     <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
       <slot />
       Main Content
-      <v-btn @click="showRight = !showRight">Button in LayouT1</v-btn>
     </v-main>
   </v-layout>
 </template>

@@ -8,4 +8,3 @@ interface Newsletter
 {
     public function subscribe(string $email);
 }
-

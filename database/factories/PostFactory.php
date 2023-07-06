@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'category_id' => Category::factory(),
             'slug' => $this->faker->word(),
             'excerpt' => $this->faker->sentence(),
-            'body' => collect($this->faker->paragraphs(5))->map(function ($paragraph){
+            'body' => collect($this->faker->paragraphs(5))->map(function ($paragraph) {
                 return vsprintf('<p>%s</p>', [$paragraph]);
             })->join(''),
             'published_at' => $this->faker->dateTime(),

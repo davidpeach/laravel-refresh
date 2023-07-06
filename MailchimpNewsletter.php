@@ -17,7 +17,7 @@ class MailchimpNewsletter
     {
         return $this->client->lists->addListMember(config('services.mailchimp.default_list_id'), [
             'email_address' => $email,
-            'status' => config('services.mailchimp.initial_member_status')
+            'status' => config('services.mailchimp.initial_member_status'),
         ]);
     }
 }
