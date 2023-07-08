@@ -24,8 +24,21 @@ ol {
 }
 p {
     font-size: 1.2em;
-    line-height: 1.8
+    line-height: 1.8;
+    max-width: 100rem;
 }
+
+img {
+    border: 1em solid salmon;
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+    margin: 0;
+    max-width: 160rem;
+}
+
 .introduction {
     font-size: 1.6em;
     margin-bottom: 4em;
@@ -36,6 +49,26 @@ p {
 
 .latest-posts h2 {
     font-size: 1.5em;
+}
+.margined-section {
+    margin-top: 4rem;
+}
+.jam {
+    display: flex;
+    align-items:center;
+    gap: 2rem;
+    font-size: 1rem;
+    color: #777;
+}
+.jam img {
+    border: .5em solid #ccc;
+}
+.current-jam {
+    font-size: 2rem;
+    color: #222;
+}
+.current-jam img {
+    border-color: salmon;
 }
 
 @media (min-width: 48rem) {
@@ -60,4 +93,18 @@ p {
     }
 }
 
+@media (min-width: 150rem) {
+    figure {
+        display: flex;
+        gap: 2em;
+    }
+    figure img {
+        height: 100%;
+        flex: 3;
+    }
+    figcaption {
+        flex: 2;
+        align-self: center;
+    }
 
+}

@@ -11,12 +11,18 @@ return new class extends Migration
      */
         public function up(): void
         {
-            Schema::create('albums', function (Blueprint $table) {
+            Schema::create('creators', function (Blueprint $table) {
                 $table->id();
-                $table->text('title');
+                $table->string('name');
                 $table->text('description');
-                $table->timestamp('released_at')->nullable();
                 $table->timestamps();
+            });
+
+            Schema::create('creatables', function (Blueprint $table) {
+                $table->foreignId('creator_id')->constrained();
+                $table->unsignedBigInteger('creatable_id');
+                $table->string('creatable_type');
+                $table->string('role');
             });
         }
 
@@ -25,6 +31,6 @@ return new class extends Migration
      */
         public function down(): void
         {
-            Schema::dropIfExists('albums');
+            Schema::dropIfExists('creators');
         }
     };

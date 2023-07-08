@@ -11,9 +11,9 @@ class Album extends Model
 {
     use HasFactory;
 
-    public function artists(): MorphToMany
+    public function creators(): MorphToMany
     {
-        return $this->morphToMany(Artist::class, 'creatable');
+        return $this->morphToMany(Creator::class, 'creatable');
     }
 
     public function songs(): HasMany

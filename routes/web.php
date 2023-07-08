@@ -51,6 +51,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 Route::prefix('design')->group(function () {
     Route::get('article', [ DesignController::class, 'article']);
+    Route::get('note', [ DesignController::class, 'note']);
+    Route::get('photo', [ DesignController::class, 'photo']);
+    Route::get('jam', [ DesignController::class, 'jam']);
+    Route::get('listen', [ DesignController::class, 'listen']);
 });
 
 require __DIR__.'/auth.php';

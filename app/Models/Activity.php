@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Artist extends Model
+class Activity extends Model
 {
     use HasFactory;
-
-    public function albums()
-    {
-        return $this->morphedByMany(Album::class, 'creatable');
-    }
 }
