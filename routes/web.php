@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Http\Controllers\DesignController;
 use App\Http\Controllers\IndexAdminPostsController;
 use App\Http\Controllers\ActivityIndexController;
+use App\Http\Controllers\ArticleShowController;
+use App\Http\Controllers\NoteShowController;
 use App\Http\Controllers\PostShowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreNewsletterSubscriberController;
@@ -23,6 +25,10 @@ Route::get('ping', function () {
 
     dd($mailchimp->lists->getAllLists());
 });
+
+Route::get('articles/{article:slug}', ArticleShowController::class);
+Route::get('notes/{note:id}', NoteShowController::class);
+
 Route::get('posts/{post:slug}', PostShowController::class);
 Route::post('posts/{post:slug}/comments', StorePostCommentController::class);
 Route::get('/', ActivityIndexController::class);

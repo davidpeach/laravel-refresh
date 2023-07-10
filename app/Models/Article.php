@@ -12,4 +12,9 @@ class Article extends Model
     use HasFactory;
     use HasActivity;
     use HasComments;
+
+    public function getPath()
+    {
+        return 'articles/' . $this->slug;
+    }
 }

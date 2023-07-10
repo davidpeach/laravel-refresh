@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Activity;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -11,9 +12,8 @@ class ActivityExcerpt extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public Activity $activity)
     {
-        //
     }
 
     /**
@@ -21,7 +21,6 @@ class ActivityExcerpt extends Component
      */
     public function render(): View|Closure|string
     {
-        // Determine the correct data and view to render based on type here?
         return view('components.activity-excerpt');
     }
 }

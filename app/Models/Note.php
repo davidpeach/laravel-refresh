@@ -12,4 +12,9 @@ class Note extends Model
     use HasFactory;
     use HasActivity;
     use HasComments;
+
+    public function getPath()
+    {
+        return 'notes/' . $this->id;
+    }
 }
