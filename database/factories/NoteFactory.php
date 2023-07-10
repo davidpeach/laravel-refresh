@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Note>
  */
-class ArticleFactory extends Factory
+class NoteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
-            'body' => collect($this->faker->paragraphs(5))->map(function ($paragraph) {
+            'body' => collect($this->faker->paragraphs(1))->map(function ($paragraph) {
                 return vsprintf('<p>%s</p>', [$paragraph]);
             })->join(''),
         ];

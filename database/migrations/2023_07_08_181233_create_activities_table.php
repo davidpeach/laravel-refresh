@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('feedable_id');
+            $table->string('feedable_type');
             $table->timestamps();
         });
     }

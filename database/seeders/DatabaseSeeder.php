@@ -6,10 +6,12 @@ namespace Database\Seeders;
 
 use App\Enums\CreatableRole;
 use App\Models\Album;
-use App\Models\Creator;
+use App\Models\Article;
 use App\Models\Comment;
-use App\Models\Post;
+use App\Models\Creator;
+use App\Models\Note;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,9 +21,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // seed posts with comments
-        //
+        $siteOwner = User::factory()->create([
+            'name' => 'Site Owner',
+            'email' => 'site-owner@example.com',
+        ]);
+
+        $commenterA = User::factory()->create([
+            'name' => 'Commenter Aye',
+            'email' => 'commenter+a@example.com',
+        ]);
+
+        $commenterB = User::factory()->create([
+            'name' => 'Commenter Bee',
+            'email' => 'commenter+b@example.com',
+        ]);
+
+        Article::factory()
+            ->count(250)
+            ->has(
+                Comment::factory()
+                    ->count(5)
+                    ->state(new Sequence(
+                        ['user_id' => $commenterA->id],
+                        ['user_id' => $commenterB->id],
+                    )),
+            )
+            ->create();
+
+        Note::factory()
+            ->count(250)
+            ->has(
+                Comment::factory()
+                    ->count(5)
+                    ->state(new Sequence(
+                        ['user_id' => $commenterA->id],
+                        ['user_id' => $commenterB->id],
+                    )),
+            )
+            ->create();
+
         // seed artists
+        $creatorSinger = Creator::factory()
+        ->hasAttached(
+            Album::factory()->count(3),
+            ['role' => CreatableRole::PERFORMER],
+        )
+        ->create([
+            'name' => 'A Singer',
+        ]);
         //
         // seed albums and songs and listens
         // and assoc with some artists
@@ -32,31 +79,20 @@ class DatabaseSeeder extends Seeder
         // seed books
         // and assoc with some artists
 
+        /* User::factory()->create([ */
+        /*     'name' => 'Test User', */
+        /*     'email' => 'test@example.com', */
+        /* ]); */
 
-        Post::factory()->times(5)->create();
+        /* $artists = Creator::factory()->times(5)->create(); */
 
-        $commentUser = User::factory()->create();
-        $commentedPost = Post::orderBy('published_at', 'desc')->first();
-
-        Comment::factory()->times(50)->create([
-            'post_id' => $commentedPost->id,
-            'user_id' => $commentUser->id,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-        $artists = Creator::factory()->times(5)->create();
-
-        $artists->each(function (Creator $artist) {
-            Album::factory()
-                ->times(5)
-                ->hasAttached($artist, [
-                    'role' => CreatableRole::DIRECTOR,
-                ])
-                ->create();
-        });
+        /* $artists->each(function (Creator $artist) { */
+        /*     Album::factory() */
+        /*         ->times(5) */
+        /*         ->hasAttached($artist, [ */
+        /*             'role' => CreatableRole::DIRECTOR, */
+        /*         ]) */
+        /*         ->create(); */
+        /* }); */
     }
 }

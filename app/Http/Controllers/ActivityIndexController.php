@@ -9,12 +9,13 @@ class ActivityIndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $activities = Activity::all();
+        $activities = Activity::query()
+            ->with('feedable')
+            ->get();
 
         return view('activity.index', [
             'activities' => $activities,
         ]);
-
 
         /* $post = Post::with('category') */
         /*     ->filter($request->only('q', 'category')) */
@@ -23,6 +24,5 @@ class ActivityIndexController extends Controller
         /* return view('post.index', [ */
         /*     'posts' => $post->get(), */
         /* ]); */
-
     }
 }

@@ -19,16 +19,6 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class);
-    }
-
     public function scopeFilter($query, array $filter)
     {
         $query->when($filter['q'] ?? false, function ($query, $search) {

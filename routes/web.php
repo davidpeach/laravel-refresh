@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\DesignController;
 use App\Http\Controllers\IndexAdminPostsController;
-use App\Http\Controllers\PostIndexController;
+use App\Http\Controllers\ActivityIndexController;
 use App\Http\Controllers\PostShowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreNewsletterSubscriberController;
@@ -25,7 +25,7 @@ Route::get('ping', function () {
 });
 Route::get('posts/{post:slug}', PostShowController::class);
 Route::post('posts/{post:slug}/comments', StorePostCommentController::class);
-Route::get('/', PostIndexController::class);
+Route::get('/', ActivityIndexController::class);
 
 /* Route::get('/admin/posts',::class); */
 /* Route::get('login', CreateLoginController::class)->middleware(['guest']); */
