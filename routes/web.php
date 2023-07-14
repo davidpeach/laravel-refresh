@@ -13,6 +13,8 @@ use App\Http\Controllers\PostShowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreNewsletterSubscriberController;
 use App\Http\Controllers\StorePostCommentController;
+use App\Http\Controllers\TagIndexController;
+use App\Http\Controllers\TagShowController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -28,8 +30,12 @@ Route::get('ping', function () {
     dd($mailchimp->lists->getAllLists());
 });
 
+Route::get('tags', TagIndexController::class);
+Route::get('tags/{tag:slug}', TagShowController::class);
+
 Route::get('articles', ArticleIndexController::class);
 Route::get('articles/{article:slug}', ArticleShowController::class);
+
 Route::get('notes', NoteIndexController::class);
 Route::get('notes/{note:id}', NoteShowController::class);
 

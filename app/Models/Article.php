@@ -6,6 +6,7 @@ use App\Models\Traits\HasActivity;
 use App\Models\Traits\HasComments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Article extends Model
 {

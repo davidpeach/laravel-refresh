@@ -26,6 +26,7 @@ class ArticleFactory extends Factory
             'body' => vsprintf('<p>%s</p>', [
                 Arr::join($this->faker->paragraphs(5), '</p><p>'),
             ]),
+            'published_at' => $this->faker->dateTimeBetween('-12 years', now()),
         ];
     }
 }

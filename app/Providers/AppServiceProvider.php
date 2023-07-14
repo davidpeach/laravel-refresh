@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\MailchimpNewsletter;
 use App\Services\Newsletter;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use MailchimpMarketing\ApiClient;
 
@@ -35,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
             'article' => 'App\Models\Article',
             'note' => 'App\Models\Note',
         ]);
+
+        Paginator::defaultView('vendor.pagination.default');
     }
 }

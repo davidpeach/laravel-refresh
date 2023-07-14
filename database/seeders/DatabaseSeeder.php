@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Article::factory()
-            ->count(5)
+            ->count(50)
             ->has(
                 Comment::factory()
                     ->count(5)
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         Note::factory()
-            ->count(5)
+            ->count(50)
             ->has(
                 Comment::factory()
                     ->count(5)

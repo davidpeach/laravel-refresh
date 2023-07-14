@@ -17,7 +17,7 @@ class ActivityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'published_at' => $this->faker->dateTimeBetween('-12 years', now()),
         ];
     }
 }

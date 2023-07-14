@@ -11,7 +11,9 @@ trait HasActivity
     protected static function booted(): void
     {
         static::created(function ($feedable) {
-            $feedable->activity()->create();
+            $feedable->activity()->create([
+                'published_at' => $feedable->published_at ?? now(),
+            ]);
         });
     }
 

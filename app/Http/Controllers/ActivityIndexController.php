@@ -11,7 +11,8 @@ class ActivityIndexController extends Controller
     {
         $activities = Activity::query()
             ->with('feedable')
-            ->get();
+            ->orderBy('published_at', 'DESC')
+            ->paginate(10);
 
         return view('activity.index', [
             'activities' => $activities,

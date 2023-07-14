@@ -9,7 +9,8 @@ class NoteIndexController
     public function __invoke()
     {
         $activities = Activity::with('feedable')
-            ->where('feedable_type', 'note')->get();
+            ->orderBy('published_at', 'desc')
+            ->where('feedable_type', 'note')->paginate(10);
 
         return view('activity.index', [
             'activities' => $activities,

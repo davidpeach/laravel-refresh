@@ -20,6 +20,7 @@ class NoteFactory extends Factory
             'body' => collect($this->faker->paragraphs(1))->map(function ($paragraph) {
                 return vsprintf('<p>%s</p>', [$paragraph]);
             })->join(''),
+            'published_at' => $this->faker->dateTimeBetween('-12 years', now()),
         ];
     }
 }

@@ -1,4 +1,4 @@
 <x-layout-design>
-    {!! $note->body !!}
+    <p> {{ $note->body }} </p>
 </x-layout-design>
 

@@ -10,6 +10,10 @@ class Activity extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'published_at',
+    ];
+
     public function feedable()
     {
         return $this->morphTo();
