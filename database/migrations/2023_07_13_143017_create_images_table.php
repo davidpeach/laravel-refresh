@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->text('title')->nullable();
             $table->string('path');
+            $table->string('wp_guid')->nullable();
+            $table->unsignedBigInteger('wp_postid')->nullable();
             $table->timestamps();
-            });
+        });
 
-            Schema::create('imageables', function (Blueprint $table) {
-                $table->unsignedBigInteger('image_id');
-                $table->unsignedBigInteger('imageable_id');
-                $table->string('imageable_type');
-            });
+        Schema::create('imageables', function (Blueprint $table) {
+            $table->unsignedBigInteger('image_id');
+            $table->unsignedBigInteger('imageable_id');
+            $table->string('imageable_type');
+        });
     }
 
     /**

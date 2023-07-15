@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('excerpt')->nullable();
             $table->text('body');
+            $table->unsignedBigInteger('wp_featured_image_id')->nullable();
             $table->timestamp('published_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });

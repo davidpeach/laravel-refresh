@@ -10,6 +10,11 @@ class Image extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'wp_guid',
+        'wp_postid',
+    ];
+
     public function notes(): MorphToMany
     {
         return $this->morphedByMany(Note::class, 'imageable');

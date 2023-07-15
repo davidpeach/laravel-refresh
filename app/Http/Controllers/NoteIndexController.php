@@ -8,7 +8,7 @@ class NoteIndexController
 {
     public function __invoke()
     {
-        $activities = Activity::with('feedable')
+        $activities = Activity::with(['feedable.tags', 'feedable.syndications', 'feedable.images'])
             ->orderBy('published_at', 'desc')
             ->where('feedable_type', 'note')->paginate(10);
 

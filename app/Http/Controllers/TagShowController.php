@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Article;
 use App\Models\Note;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,15 +15,9 @@ class TagShowController extends Controller
      */
     public function __invoke(Tag $tag)
     {
-        $activities = Activity::with([
-            'feedable' => [
-                'images',
-                'syndications',
-                'tags',
-            ],
-        ])->whereHasMorph(
+        $activities = Activity::whereHasMorph(
             'feedable',
-            [Note::class],
+            [Note::class, Article::class],
             function (Builder $query) use ($tag) {
                 $query->whereHas(
                     'tags',
@@ -31,7 +26,19 @@ class TagShowController extends Controller
                     }
                 );
             }
-        )->paginate(5);
+        )
+            ->orderBy('published_at', 'desc')
+            ->paginate(10)
+            ->loadMorph('feedable', [
+                Note::class => [
+                    'images',
+                    'syndications',
+                    'tags',
+                ],
+                Article::class => [
+                    'tags',
+                ],
+            ]);
 
         return view('activity.index', [
             'activities' => $activities,
