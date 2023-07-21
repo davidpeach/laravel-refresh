@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('body');
             $table->unsignedBigInteger('wp_featured_image_id')->nullable();
             $table->timestamp('published_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->boolean('is_live')->default(false);
             $table->timestamps();
         });
     }

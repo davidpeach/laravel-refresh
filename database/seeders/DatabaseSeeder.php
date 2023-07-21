@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Creator;
 use App\Models\Note;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
@@ -21,9 +22,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $siteOwner = User::factory()->create([
+        User::factory()->create([
             'name' => 'Site Owner',
-            'email' => 'site-owner@example.com',
+            'email' => 'admin@example.com',
         ]);
 
         $commenterA = User::factory()->create([
@@ -46,6 +47,9 @@ class DatabaseSeeder extends Seeder
                         ['user_id' => $commenterB->id],
                     )),
             )
+            ->hasAttached(
+                Tag::factory()->count(5)
+            )
             ->create();
 
         Note::factory()
@@ -62,13 +66,13 @@ class DatabaseSeeder extends Seeder
 
         // seed artists
         $creatorSinger = Creator::factory()
-        ->hasAttached(
-            Album::factory()->count(3),
-            ['role' => CreatableRole::PERFORMER],
-        )
-        ->create([
-            'name' => 'A Singer',
-        ]);
+            ->hasAttached(
+                Album::factory()->count(3),
+                ['role' => CreatableRole::PERFORMER],
+            )
+            ->create([
+                'name' => 'A Singer',
+            ]);
         //
         // seed albums and songs and listens
         // and assoc with some artists

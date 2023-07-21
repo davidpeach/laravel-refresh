@@ -7,13 +7,23 @@ use App\Models\Traits\HasComments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Support\Carbon;
 
 class Article extends Model
 {
     use HasFactory;
     use HasActivity;
     use HasComments;
+
+    protected $fillable = [
+        'title',
+        'is_live',
+        'excerpt',
+        'body',
+    ];
+
+    protected $casts = [
+        'is_live' => 'boolean',
+    ];
 
     public function getPath()
     {

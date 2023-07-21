@@ -4,6 +4,7 @@ export const useLayoutStore = defineStore('layout', {
     state: () => ({
         showLeft : true,
         showRight : false,
+        currentPost: false,
     }),
 
     actions: {
@@ -12,6 +13,18 @@ export const useLayoutStore = defineStore('layout', {
         },
         toggleRight() {
             this.showRight = !this.showRight
-        }
+        },
+        async loadPost(id: number) {
+            const response = await fetch('/dashboard/articles/' + id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+
+            const result = await response.json()
+
+            return result.data
+        },
     }
 })
