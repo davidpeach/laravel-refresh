@@ -14,8 +14,8 @@ export const useLayoutStore = defineStore('layout', {
         toggleRight() {
             this.showRight = !this.showRight
         },
-        async loadPost(id: number) {
-            const response = await fetch('/dashboard/articles/' + id, {
+        async loadPost(id: number, type: string) {
+            const response = await fetch('/dashboard/' + type + '/' + id, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

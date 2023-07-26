@@ -18,10 +18,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('taggables', function (Blueprint $table) {
+        Schema::create('activity_tag', function (Blueprint $table) {
+            $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('tag_id');
-            $table->unsignedBigInteger('taggable_id');
-            $table->string('taggable_type');
         });
     }
 

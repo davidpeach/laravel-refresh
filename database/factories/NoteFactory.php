@@ -21,6 +21,7 @@ class NoteFactory extends Factory
                 return vsprintf('<p>%s</p>', [$paragraph]);
             })->join(''),
             'published_at' => $this->faker->dateTimeBetween('-12 years', now()),
+            'is_live' => true,
         ];
     }
 }

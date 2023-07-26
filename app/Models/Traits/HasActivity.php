@@ -3,12 +3,11 @@
 namespace App\Models\Traits;
 
 use App\Models\Activity;
-use App\Models\Article;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasActivity
 {
-    protected static function booted(): void
+    protected static function bootHasActivity(): void
     {
         static::created(function ($feedable) {
             $feedable->activity()->create([

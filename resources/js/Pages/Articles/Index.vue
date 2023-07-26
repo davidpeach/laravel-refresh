@@ -25,7 +25,7 @@ const submit = (closeAfterUpdate: Boolean) => {
                     closeEdit()
                 }
             }
-    })
+        })
 }
 
 const onPublishChange = (post) => {
@@ -38,13 +38,13 @@ const onPublishChange = (post) => {
             onSuccess: () => {
                 router.reload({only: ['posts']})
             }
-    })
+        })
 }
 
 defineProps({ posts: Object, tags: Object })
 
 async function editPost(id: number) {
-    let post = await layoutStore.loadPost(id)
+    let post = await layoutStore.loadPost(id, 'articles')
     form.title = post.title
     form.excerpt = post.excerpt
     form.body = post.body
@@ -102,30 +102,39 @@ function closeEdit() {
             </v-form>
         </template>
 
-        <v-col cols="12">
-            <v-table>
-                <thead>
-                    <th class="text-left">
-                        Title
-                    </th>
-                    <th class="text-left">
-                        Actions
-                    </th>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="post in posts.data"
-                        :key="post.id"
-                    >
-                        <td class="w-75">{{ post.title }}</td>
-                        <td class="flex">
-                            <v-switch v-model="post.is_live" @change="onPublishChange(post)" label="published"></v-switch>
-                            <v-btn @click="editPost(post.id)">Edit</v-btn>
-                        </td>
-                    </tr>
-                </tbody>
-            </v-table>
-            <PaginationLinks :links="posts.links" />
-        </v-col>
+        <v-container fluid>
+            <v-row>
+                <v-col>
+                    <Link :href="route('dashboard.article.create')">Add Article</Link>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col cols="12">
+                    <v-table>
+                        <thead>
+                            <th class="text-left">
+                                Title
+                            </th>
+                            <th class="text-left">
+                                Actions
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="post in posts.data"
+                                :key="post.id"
+                            >
+                                <td class="w-75">{{ post.title }}</td>
+                                <td class="flex">
+                                    <v-switch v-model="post.is_live" @change="onPublishChange(post)" label="published"></v-switch>
+                                    <v-btn @click="editPost(post.id)">Edit</v-btn>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </v-table>
+                    <PaginationLinks :links="posts.links" />
+                </v-col>
+            </v-row>
+        </v-container>
     </NewAuthLayout>
 </template>

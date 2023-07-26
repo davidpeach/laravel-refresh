@@ -27,6 +27,7 @@ class ArticleFactory extends Factory
                 Arr::join($this->faker->paragraphs(5), '</p><p>'),
             ]),
             'published_at' => $this->faker->dateTimeBetween('-12 years', now()),
+            'is_live' => true,
         ];
     }
 }

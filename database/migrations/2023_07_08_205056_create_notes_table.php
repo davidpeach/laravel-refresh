@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->text('body');
             $table->timestamp('published_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->boolean('is_live')->default(false);
             $table->timestamps();
         });
     }

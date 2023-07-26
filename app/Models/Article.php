@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\PubliclyViewableScope;
 use App\Models\Traits\HasActivity;
 use App\Models\Traits\HasComments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +26,11 @@ class Article extends Model
         'is_live' => 'boolean',
     ];
 
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new PubliclyViewableScope);
+    }
+
     public function getPath()
     {
         return 'articles/' . $this->slug;
@@ -33,10 +39,5 @@ class Article extends Model
     public function images(): MorphToMany
     {
         return $this->morphToMany(Image::class, 'imageable');
-    }
-
-    public function tags(): MorphToMany
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
     }
 }

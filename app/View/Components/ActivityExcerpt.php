@@ -21,6 +21,11 @@ class ActivityExcerpt extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.activity-excerpt');
+        return match ($this->activity->type) {
+            'article' => view('partials.article-excerpt'),
+            'note' => view('partials.note-excerpt'),
+            'photo' => view('partials.photo-excerpt'),
+            default => view('components.activity-excerpt'),
+        };
     }
 }

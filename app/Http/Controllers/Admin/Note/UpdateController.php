@@ -1,25 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Article;
+namespace App\Http\Controllers\Admin\Note;
 
-use App\Models\Article;
+use App\Models\Note;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class UpdateController
 {
-    public function __invoke(int $article, Request $request)
+    public function __invoke(int $note, Request $request)
     {
-        $article = Article::withoutGlobalScopes()->find(id: $article);
+        $note = Note::withoutGlobalScopes()->find(id: $note);
         $attributes = $request->validate([
-            'title' => [
-                'sometimes',
-                'string',
-            ],
-            'excerpt' => [
-                'sometimes',
-                'string',
-            ],
             'body' => [
                 'sometimes',
                 'string',
@@ -42,9 +34,9 @@ class UpdateController
                 ->filter()
                 ->pluck('id')
                 ->values();
-            $article->activity->tags()->sync($tags);
+            $note->activity->tags()->sync($tags);
         }
 
-        $article->update($attributes);
+        $note->update($attributes);
     }
 }

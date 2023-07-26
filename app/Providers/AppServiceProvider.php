@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
             'album' => 'App\Models\Album',
             'article' => 'App\Models\Article',
             'note' => 'App\Models\Note',
+            'photo' => 'App\Models\Photo',
         ]);
 
         Paginator::defaultView('vendor.pagination.default');

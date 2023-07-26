@@ -26,6 +26,6 @@ class WordPressImporter extends Command
      */
     public function handle(Importer $importer)
     {
-        $importer->withFile(storage_path('wp.xml'))->import();
+        $importer->withFile(storage_path('wp2.xml'))->import();
     }
 }

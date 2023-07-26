@@ -11,9 +11,10 @@ class ShowController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Article $article)
+    public function __invoke($article)
     {
-        return new ArticleResource($article->load('tags'));
-        return $article->load('tags');
+        return new ArticleResource(
+            Article::withoutGlobalScopes()->with(['activity.tags'])->find($article)
+        );
     }
 }

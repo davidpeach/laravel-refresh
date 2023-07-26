@@ -1,5 +1,5 @@
 <x-layout-design>
-    <p> {{ $note->body }} </p>
+    {!! $note->body !!}
     @unless($note->images->isEmpty())
         @foreach($note->images as $image)
             <img src="/storage/{{ $image->path }}" />
