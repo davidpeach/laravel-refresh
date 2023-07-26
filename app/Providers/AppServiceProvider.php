@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+use App\Services\MailchimpNewsletter;
+use App\Services\Newsletter;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use MailchimpMarketing\ApiClient;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +16,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        app()->bind(Newsletter::class, function () {
+            return new MailchimpNewsletter(
+                (new ApiClient())->setConfig([
+                    'apiKey' => config('services.mailchimp.key'),
+                    'server' => config('services.mailchimp.server_prefix'),
+                ])
+            );
+        });
     }
 
     /**
@@ -19,6 +31,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Relation::enforceMorphMap([
+            'album' => 'App\Models\Album',
+            'article' => 'App\Models\Article',
+            'note' => 'App\Models\Note',
+            'photo' => 'App\Models\Photo',
+        ]);
+
+        Paginator::defaultView('vendor.pagination.default');
     }
 }
