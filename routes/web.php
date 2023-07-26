@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\ActivityIndexController;
-use App\Http\Controllers\Admin\Article\IndexController as AdminArticleIndexController;
 use App\Http\Controllers\Admin\Article\CreateController as AdminArticleCreateController;
-use App\Http\Controllers\Admin\Article\StoreController as AdminArticleStoreController;
+use App\Http\Controllers\Admin\Article\IndexController as AdminArticleIndexController;
 use App\Http\Controllers\Admin\Article\ShowController as AdminArticleShowController;
+use App\Http\Controllers\Admin\Article\StoreController as AdminArticleStoreController;
 use App\Http\Controllers\Admin\Article\UpdateController as AdminArticleUpdateController;
 use App\Http\Controllers\Admin\Note\IndexController as AdminNoteIndexController;
-use App\Http\Controllers\Admin\Note\UpdateController as AdminNoteUpdateController;
 use App\Http\Controllers\Admin\Note\ShowController as AdminNoteShowController;
+use App\Http\Controllers\Admin\Note\UpdateController as AdminNoteUpdateController;
 use App\Http\Controllers\ArticleIndexController;
 use App\Http\Controllers\ArticleShowController;
 use App\Http\Controllers\DesignController;
@@ -79,4 +79,4 @@ Route::prefix('design')->group(function () {
     Route::get('listen', [DesignController::class, 'listen']);
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

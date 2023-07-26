@@ -76,7 +76,7 @@ class Importer
                     (string) $category->attributes()[1]
                 );
 
-                $model = match($cat) {
+                $model = match ($cat) {
                     'a-plague-tale-innocence', 'control', 'days-gone',
                     'dead-by-daylight', 'death-stranding', 'everybodys-gone-to-the-rapture',
                     'god-of-war', 'hellblade-senuas-sacrifice', 'horizon-zero-dawn',
@@ -118,7 +118,7 @@ class Importer
         $model->is_live = true;
         $model->save();
 
-        foreach($tags as $tag) {
+        foreach ($tags as $tag) {
             $model->tags()->attach($tag);
         }
 

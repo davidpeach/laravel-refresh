@@ -5,26 +5,26 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-    {
-        /**
+{
+    /**
      * Run the migrations.
      */
-        public function up(): void
-        {
-            Schema::create('albums', function (Blueprint $table) {
-                $table->id();
-                $table->text('title');
-                $table->text('description');
-                $table->timestamp('released_at')->nullable();
-                $table->timestamps();
-            });
-        }
+    public function up(): void
+    {
+        Schema::create('albums', function (Blueprint $table) {
+            $table->id();
+            $table->text('title');
+            $table->text('description');
+            $table->timestamp('released_at')->nullable();
+            $table->timestamps();
+        });
+    }
 
-        /**
+    /**
      * Reverse the migrations.
      */
-        public function down(): void
-        {
-            Schema::dropIfExists('albums');
-        }
-    };
+    public function down(): void
+    {
+        Schema::dropIfExists('albums');
+    }
+};
