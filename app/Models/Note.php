@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
+/**
+ * @property-read int $id
+ * @property string $body
+ * @property boolean $is_live
+ */
 class Note extends Model
 {
     use HasFactory;

@@ -12,7 +12,7 @@ class TagIndexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $tags = Tag::with(['articles', 'notes', 'photos'])->all();
+        $tags = Tag::all();
 
         return view('tags.index', [
             'tags' => $tags,

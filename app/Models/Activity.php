@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
 
+/**
+ * @property MorphTo $feedable
+ */
 class Activity extends Model
 {
     use HasFactory;
@@ -15,7 +19,7 @@ class Activity extends Model
         'published_at',
     ];
 
-    public function feedable()
+    public function feedable(): MorphTo
     {
         return $this->morphTo();
     }
