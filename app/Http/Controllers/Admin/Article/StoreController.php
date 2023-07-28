@@ -9,6 +9,6 @@ class StoreController
 {
     public function __invoke(Article $article, Request $request)
     {
-       dd($article, $request->all());
+        dd($article, $request->all());
     }
 }

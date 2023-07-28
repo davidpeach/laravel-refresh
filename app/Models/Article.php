@@ -33,7 +33,7 @@ class Article extends Model
 
     public function getPath()
     {
-        return 'articles/' . $this->slug;
+        return 'articles/'.$this->slug;
     }
 
     public function images(): MorphToMany

@@ -7,7 +7,6 @@ use App\Models\Note;
 use App\Models\Syndication;
 use App\Models\Tag;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class TweetsImporter
@@ -47,7 +46,7 @@ class TweetsImporter
 
             $syndication = new Syndication();
             $syndication->external_site = 'twitter';
-            $syndication->external_url = 'https://twitter.com/chegalabonga/status/' . $tweetId;
+            $syndication->external_url = 'https://twitter.com/chegalabonga/status/'.$tweetId;
             $note->syndications()->save($syndication);
 
             if (! empty($hashtags)) {
@@ -63,8 +62,8 @@ class TweetsImporter
 
             if (! empty($media)) {
                 foreach ($media as $m) {
-                    $imagePath = Str::uuid() . '.jpg';
-                    copy($m['media_url_https'] . '?name=4096x4096', storage_path('/app/public/' . $imagePath));
+                    $imagePath = Str::uuid().'.jpg';
+                    copy($m['media_url_https'].'?name=4096x4096', storage_path('/app/public/'.$imagePath));
                     $image = new Image();
                     $image->path = $imagePath;
                     $image->save();
@@ -72,7 +71,7 @@ class TweetsImporter
                 }
             }
 
-            foreach($user_mentions as $user) {
+            foreach ($user_mentions as $user) {
                 $contact = [];
                 $contact['name'] = $user['name'];
                 $contact['username'] = $user['screen_name'];
@@ -80,7 +79,6 @@ class TweetsImporter
 
                 // Create contact.
             }
-
 
             dump($tweet);
         });

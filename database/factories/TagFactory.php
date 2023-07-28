@@ -17,7 +17,8 @@ class TagFactory extends Factory
      */
     public function definition(): array
     {
-        $title = $this->faker->word() . time();
+        $title = $this->faker->word().time();
+
         return [
             'title' => $title,
             'slug' => Str::slug($title),

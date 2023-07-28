@@ -2,9 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin Note
+ */
 class NoteResource extends JsonResource
 {
     /**

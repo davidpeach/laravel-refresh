@@ -21,7 +21,7 @@ class Photo extends Model
 
     public function getPath()
     {
-        return 'virtual-photography/' . $this->slug;
+        return 'virtual-photography/'.$this->slug;
     }
 
     public function images(): MorphToMany

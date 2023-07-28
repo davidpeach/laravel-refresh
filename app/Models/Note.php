@@ -7,10 +7,14 @@ use App\Models\Traits\HasActivity;
 use App\Models\Traits\HasComments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
+/**
+ * @property-read int $id
+ * @property string $body
+ * @property boolean $is_live
+ */
 class Note extends Model
 {
     use HasFactory;
@@ -33,7 +37,7 @@ class Note extends Model
 
     public function getPath()
     {
-        return 'notes/' . $this->id;
+        return 'notes/'.$this->id;
     }
 
     public function images(): MorphToMany
